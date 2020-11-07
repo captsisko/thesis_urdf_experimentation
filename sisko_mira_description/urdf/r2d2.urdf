@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+
+<robot name="R2D2">
+
+    <material name="blue">
+        <color rgba="0.0 0.0 1.0 1.0"/>
+    </material>
+    <material name="white">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+    <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+    </material>
+    <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+    </material>
+    <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+    </material>
+
+    <!-- Base Link -->
+
+        <link name="base_link">
+            <visual name="">
+                <geometry>
+                    <cylinder radius="0.2" length="0.6"/>
+                </geometry>
+                <material name="blue"/>
+            </visual>
+        </link>
+
+    <!-- right leg -->
+
+        <link name="rightleg_link">
+            <visual name="">
+                <geometry>
+                    <box size="0.6 0.1 0.2"/>
+                </geometry>
+                <origin xyz="0.0 0.0 -0.3" rpy="0.0 1.57075 0.0"/>
+                <material name="white"/>
+            </visual>
+        </link>
+
+        <joint name="base_to_right_leg" type="fixed">
+            <parent link="base_link"/>
+            <child link="rightleg_link"/>
+            <origin xyz="0.0 -0.22 0.25" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+    <!-- left leg -->
+
+        <link name="leftleg_link">
+            <visual name="">
+                <geometry>
+                    <box size="0.6 0.1 0.2"/>
+                </geometry>
+                <origin xyz="0.0 0.0 -0.3" rpy="0.0 1.57075 0.0"/>
+                <material name="white"/>
+            </visual>
+        </link>
+
+        <joint name="base_to_left_leg" type="fixed">
+            <parent link="base_link"/>
+            <child link="leftleg_link"/>
+            <origin xyz="0.0 0.22 0.25" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+    <!-- left leg base -->
+
+        <link name="leftleg_base_link">
+            <visual name="">
+                <geometry>
+                    <box size="0.4 0.1 0.1"/>
+                </geometry>
+                <material name="white"/>
+            </visual>
+        </link>
+
+        <joint name="leftleg_to_leftbase" type="fixed">
+            <parent link="leftleg_link"/>
+            <child link="leftleg_base_link"/>
+            <origin xyz="0.0 0.0 -0.6" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+    <!-- right leg base -->
+
+        <link name="rightleg_base_link">
+            <visual name="">
+                <geometry>
+                    <box size="0.4 0.1 0.1"/>
+                </geometry>
+                <material name="white"/>
+            </visual>
+        </link>
+
+        <joint name="rightleg_to_leftbase" type="fixed">
+            <parent link="rightleg_link"/>
+            <child link="rightleg_base_link"/>
+            <origin xyz="0.0 0.0 -0.6" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+    <!-- left leg base wheels -->
+
+        <link name="leftbase_front_wheel">
+            <visual>
+                <geometry>
+                    <cylinder radius="0.05" length="0.1"/>
+                </geometry>
+                <material name="black"/>
+                <origin xyz="0.0 0.0 0.0" rpy="1.57075 0.0 0.0"/>
+            </visual>
+        </link>
+
+        <joint name="leftbase_front_wheel_joint" type="revolute">
+            <parent link="leftleg_base_link"/>
+            <child link="leftbase_front_wheel"/>
+            <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
+            <origin xyz="0.133333333333 0 -0.1" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+        <link name="leftbase_rear_wheel">
+            <visual>
+                <geometry>
+                    <cylinder radius="0.05" length="0.1"/>
+                </geometry>
+                <material name="black"/>
+                <origin xyz="0.0 0.0 0.0" rpy="1.57075 0.0 0.0"/>
+            </visual>
+        </link>
+
+        <joint name="leftbase_rear_wheel_joint" type="revolute">
+            <parent link="leftleg_base_link"/>
+            <child link="leftbase_rear_wheel"/>
+            <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
+            <origin xyz="-0.133333333333 0 -0.1" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+    <!-- right leg base wheels -->
+
+        <link name="rightbase_front_wheel">
+            <visual>
+                <geometry>
+                    <cylinder radius="0.05" length="0.1"/>
+                </geometry>
+                <material name="black"/>
+                <origin xyz="0.0 0.0 0.0" rpy="1.57075 0.0 0.0"/>
+            </visual>
+        </link>
+
+        <joint name="rightbase_front_wheel_joint" type="revolute">
+            <parent link="rightleg_base_link"/>
+            <child link="rightbase_front_wheel"/>
+            <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
+            <origin xyz="0.133333333333 0 -0.1" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+        <link name="rightbase_rear_wheel">
+            <visual>
+                <geometry>
+                    <cylinder radius="0.05" length="0.1"/>
+                </geometry>
+                <material name="black"/>
+                <origin xyz="0.0 0.0 0.0" rpy="1.57075 0.0 0.0"/>
+            </visual>
+        </link>
+
+        <joint name="rightbase_rear_wheel_joint" type="revolute">
+            <parent link="rightleg_base_link"/>
+            <child link="rightbase_rear_wheel"/>
+            <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
+            <origin xyz="-0.133333333333 0 -0.1" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+    <!--  -->
+
+        <link name="gripper_arm">
+            <visual>
+                <geometry>
+                    <cylinder radius="0.006" length="0.5"/>
+                </geometry>
+                <origin xyz="0.4 0.0 0.15" rpy="0.0 1.57075 0.0"/>
+                <material name="white"/>
+            </visual>
+        </link>
+
+        <joint name="gripper_arm_joint" type="fixed">
+            <parent link="base_link"/>
+            <child link="gripper_arm"/>
+        </joint>
+
+    <!--  -->
+
+        <link name="header_link">
+            <visual>
+                <geometry>
+                    <sphere radius="0.2"/>
+                </geometry>
+                <material name="white"/>
+            </visual>
+        </link>
+
+        <joint name="header_joint" type="revolute">
+            <parent link="base_link"/>
+            <child link="header_link"/>
+            <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
+            <origin xyz="0.0 0.0 0.3" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+    <!--  -->
+
+        <link name="headbox">
+            <visual>
+                <geometry>
+                    <box size="0.05 0.05 0.05"/>
+                </geometry>
+                <material name="blue"/>
+                <origin xyz="0.17 0.0 0.095" rpy="0.0 0.0 0.0"/>
+            </visual>
+        </link>
+
+        <joint name="headbox" type="fixed">
+            <parent link="header_link"/>
+            <child link="headbox"/>
+        </joint>
+
+</robot>

@@ -1,0 +1,17 @@
+<launch>
+    <arg name='model' default=''/>
+
+    <param name='robot_description' command='cat $(arg model)'/>
+
+    <!-- for sending fake joint values -->
+    <node name='joint_state_publisher' type='joint_state_publisher' pkg='joint_state_publisher'/>
+
+    <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher_gui"/>
+
+    <!-- for combine joint values -->
+    <node name='robot_state_publisher' type='robot_state_publisher' pkg='robot_state_publisher'/>
+
+    <!-- <node name='rviz' pkg='rviz' type='rviz' args='-d $(find sisko_mira_description)/rviz_config/urdf.rviz'/> -->
+    <node name='rviz' pkg='rviz' type='rviz' args='' />
+
+</launch>
