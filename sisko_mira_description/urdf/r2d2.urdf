@@ -111,7 +111,8 @@
             </visual>
         </link>
 
-        <joint name="leftbase_front_wheel_joint" type="revolute">
+        <joint name="leftbase_front_wheel_joint" type="continuous">
+            <axis xyz="0.0 1.0 0.0"/>
             <parent link="leftleg_base_link"/>
             <child link="leftbase_front_wheel"/>
             <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
@@ -128,7 +129,8 @@
             </visual>
         </link>
 
-        <joint name="leftbase_rear_wheel_joint" type="revolute">
+        <joint name="leftbase_rear_wheel_joint" type="continuous">
+            <axis xyz="0.0 1.0 0.0"/>
             <parent link="leftleg_base_link"/>
             <child link="leftbase_rear_wheel"/>
             <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
@@ -147,7 +149,8 @@
             </visual>
         </link>
 
-        <joint name="rightbase_front_wheel_joint" type="revolute">
+        <joint name="rightbase_front_wheel_joint" type="continuous">
+            <axis xyz="0.0 1.0 0.0"/>
             <parent link="rightleg_base_link"/>
             <child link="rightbase_front_wheel"/>
             <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
@@ -164,7 +167,8 @@
             </visual>
         </link>
 
-        <joint name="rightbase_rear_wheel_joint" type="revolute">
+        <joint name="rightbase_rear_wheel_joint" type="continuous">
+            <axis xyz="0.0 1.0 0.0"/>
             <parent link="rightleg_base_link"/>
             <child link="rightbase_rear_wheel"/>
             <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
@@ -183,9 +187,10 @@
             </visual>
         </link>
 
-        <joint name="gripper_arm_joint" type="fixed">
+        <joint name="gripper_arm_joint" type="prismatic">
             <parent link="base_link"/>
             <child link="gripper_arm"/>
+            <limit effort="1000.0" lower="-0.38" upper="0" velocity="0.5"/>
         </joint>
 
         <!-- Left Gripper -->
@@ -199,7 +204,9 @@
                 </visual>
             </link>
 
-            <joint name="gripperLeft_to_gripper" type="fixed">
+            <joint name="gripperLeft_to_gripper" type="revolute">
+                <axis xyz="0.0 0.0 1.0"/>
+                <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
                 <parent link="gripper_arm"/>
                 <child link="gripper_left_finger"/>
                 <origin xyz="0.7 0.0 0.15" rpy="0.0 0.0 0.0"/>
@@ -233,7 +240,9 @@
                 </visual>
             </link>
 
-            <joint name="gripperRight_to_gripper" type="fixed">
+            <joint name="gripperRight_to_gripper" type="revolute">
+                <axis xyz="0.0 0.0 1.0"/>
+                <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
                 <parent link="gripper_arm"/>
                 <child link="gripper_right_finger"/>
                 <origin xyz="0.7 -0.0 0.15" rpy="-3.1415 0.0 0.0"/>
@@ -267,11 +276,12 @@
             </visual>
         </link>
 
-        <joint name="header_joint" type="revolute">
+        <joint name="header_joint" type="continuous">
             <parent link="base_link"/>
             <child link="header_link"/>
             <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
             <origin xyz="0.0 0.0 0.3" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 0.0 1.0"/>
         </joint>
 
     <!-- Box set in Head -->
