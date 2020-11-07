@@ -171,14 +171,14 @@
             <origin xyz="-0.133333333333 0 -0.1" rpy="0.0 0.0 0.0"/>
         </joint>
 
-    <!--  -->
+    <!-- Gripper -->
 
         <link name="gripper_arm">
             <visual>
                 <geometry>
                     <cylinder radius="0.006" length="0.5"/>
                 </geometry>
-                <origin xyz="0.4 0.0 0.15" rpy="0.0 1.57075 0.0"/>
+                <origin xyz="0.45 0.0 0.15" rpy="0.0 1.57075 0.0"/>
                 <material name="white"/>
             </visual>
         </link>
@@ -188,7 +188,75 @@
             <child link="gripper_arm"/>
         </joint>
 
-    <!--  -->
+        <!-- Left Gripper -->
+
+            <link name="gripper_left_finger">
+                <visual>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                    <geometry>
+                        <mesh filename="package://urdf_tutorial/meshes/l_finger.dae"/>
+                    </geometry>
+                </visual>
+            </link>
+
+            <joint name="gripperLeft_to_gripper" type="fixed">
+                <parent link="gripper_arm"/>
+                <child link="gripper_left_finger"/>
+                <origin xyz="0.7 0.0 0.15" rpy="0.0 0.0 0.0"/>
+            </joint>
+
+            <!-- Left Gripper Finger Tip -->
+
+                <link name="gripper_left_finger_tip">
+                    <visual>
+                        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                        <geometry>
+                            <mesh filename="package://urdf_tutorial/meshes/l_finger_tip.dae"/>
+                        </geometry>
+                    </visual>
+                </link>
+
+                <joint name="gripperLeft_finger_tip_to_gripper" type="fixed">
+                    <parent link="gripper_left_finger"/>
+                    <child link="gripper_left_finger_tip"/>
+                    <origin xyz="0.10 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                </joint>
+
+        <!-- Right Gripper -->
+
+            <link name="gripper_right_finger">
+                <visual>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                    <geometry>
+                        <mesh filename="package://urdf_tutorial/meshes/l_finger.dae"/>
+                    </geometry>
+                </visual>
+            </link>
+
+            <joint name="gripperRight_to_gripper" type="fixed">
+                <parent link="gripper_arm"/>
+                <child link="gripper_right_finger"/>
+                <origin xyz="0.7 -0.0 0.15" rpy="-3.1415 0.0 0.0"/>
+            </joint>
+
+            <!-- Left Gripper Finger Tip -->
+
+                <link name="gripper_right_finger_tip">
+                    <visual>
+                        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                        <geometry>
+                            <mesh filename="package://urdf_tutorial/meshes/l_finger_tip.dae"/>
+                        </geometry>
+                    </visual>
+                </link>
+
+                <joint name="gripperRight_finger_tip_to_gripper" type="fixed">
+                    <parent link="gripper_right_finger"/>
+                    <child link="gripper_right_finger_tip"/>
+                    <origin xyz="0.10 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                </joint>
+
+    <!-- Head -->
 
         <link name="header_link">
             <visual>
@@ -206,7 +274,7 @@
             <origin xyz="0.0 0.0 0.3" rpy="0.0 0.0 0.0"/>
         </joint>
 
-    <!--  -->
+    <!-- Box set in Head -->
 
         <link name="headbox">
             <visual>
