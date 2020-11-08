@@ -39,6 +39,15 @@
                 <origin xyz="0.0 0.0 -0.3" rpy="0.0 1.57075 0.0"/>
                 <material name="white"/>
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.6 0.1 0.2"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
         </link>
 
         <joint name="base_to_right_leg" type="fixed">
@@ -57,6 +66,15 @@
                 <origin xyz="0.0 0.0 -0.3" rpy="0.0 1.57075 0.0"/>
                 <material name="white"/>
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.6 0.1 0.2"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
         </link>
 
         <joint name="base_to_left_leg" type="fixed">
@@ -74,6 +92,15 @@
                 </geometry>
                 <material name="white"/>
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.4 0.1 0.1"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
         </link>
 
         <joint name="leftleg_to_leftbase" type="fixed">
@@ -91,6 +118,15 @@
                 </geometry>
                 <material name="white"/>
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.4 0.1 0.1"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
         </link>
 
         <joint name="rightleg_to_leftbase" type="fixed">
@@ -109,6 +145,15 @@
                 <material name="black"/>
                 <origin xyz="0.0 0.0 0.0" rpy="1.57075 0.0 0.0"/>
             </visual>
+            <collision>
+                <geometry>
+                    <cylinder radius="0.05" length="0.1"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
         </link>
 
         <joint name="leftbase_front_wheel_joint" type="continuous">
@@ -127,6 +172,15 @@
                 <material name="black"/>
                 <origin xyz="0.0 0.0 0.0" rpy="1.57075 0.0 0.0"/>
             </visual>
+            <collision>
+                <geometry>
+                    <cylinder radius="0.05" length="0.1"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
         </link>
 
         <joint name="leftbase_rear_wheel_joint" type="continuous">
@@ -147,6 +201,15 @@
                 <material name="black"/>
                 <origin xyz="0.0 0.0 0.0" rpy="1.57075 0.0 0.0"/>
             </visual>
+            <collision>
+                <geometry>
+                    <cylinder radius="0.05" length="0.1"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
         </link>
 
         <joint name="rightbase_front_wheel_joint" type="continuous">
@@ -165,6 +228,15 @@
                 <material name="black"/>
                 <origin xyz="0.0 0.0 0.0" rpy="1.57075 0.0 0.0"/>
             </visual>
+            <collision>
+                <geometry>
+                    <cylinder radius="0.05" length="0.1"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
         </link>
 
         <joint name="rightbase_rear_wheel_joint" type="continuous">
@@ -185,6 +257,15 @@
                 <origin xyz="0.45 0.0 0.15" rpy="0.0 1.57075 0.0"/>
                 <material name="white"/>
             </visual>
+            <collision>
+                <geometry>
+                    <cylinder radius="0.006" length="0.5"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
         </link>
 
         <joint name="gripper_arm_joint" type="prismatic">
@@ -274,6 +355,15 @@
                 </geometry>
                 <material name="white"/>
             </visual>
+            <collision>
+                <geometry>
+                    <sphere radius="0.2"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
         </link>
 
         <joint name="header_joint" type="continuous">
@@ -294,6 +384,15 @@
                 <material name="blue"/>
                 <origin xyz="0.17 0.0 0.095" rpy="0.0 0.0 0.0"/>
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.05 0.05 0.05"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
         </link>
 
         <joint name="headbox" type="fixed">

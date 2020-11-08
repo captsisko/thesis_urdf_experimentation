@@ -3,12 +3,48 @@ node [shape=box];
 "base_link" [label="base_link"];
 "leftleg_link" [label="leftleg_link"];
 "leftleg_base_link" [label="leftleg_base_link"];
+"leftbase_front_wheel" [label="leftbase_front_wheel"];
+"leftbase_rear_wheel" [label="leftbase_rear_wheel"];
 "rightleg_link" [label="rightleg_link"];
+"rightleg_base_link" [label="rightleg_base_link"];
+"rightbase_front_wheel" [label="rightbase_front_wheel"];
+"rightbase_rear_wheel" [label="rightbase_rear_wheel"];
+"gripper_arm" [label="gripper_arm"];
+"gripper_left_finger" [label="gripper_left_finger"];
+"gripper_left_finger_tip" [label="gripper_left_finger_tip"];
+"gripper_right_finger" [label="gripper_right_finger"];
+"gripper_right_finger_tip" [label="gripper_right_finger_tip"];
+"header_link" [label="header_link"];
+"headbox" [label="headbox"];
 node [shape=ellipse, color=blue, fontcolor=blue];
 "base_link" -> "base_to_left_leg" [label="xyz: 0 0.22 0.25 \nrpy: 0 -0 0"]
 "base_to_left_leg" -> "leftleg_link"
-"leftleg_link" -> "leftleg_to_leftbase" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"leftleg_link" -> "leftleg_to_leftbase" [label="xyz: 0 0 -0.6 \nrpy: 0 -0 0"]
 "leftleg_to_leftbase" -> "leftleg_base_link"
+"leftleg_base_link" -> "leftbase_front_wheel_joint" [label="xyz: 0.133333 0 -0.1 \nrpy: 0 -0 0"]
+"leftbase_front_wheel_joint" -> "leftbase_front_wheel"
+"leftleg_base_link" -> "leftbase_rear_wheel_joint" [label="xyz: -0.133333 0 -0.1 \nrpy: 0 -0 0"]
+"leftbase_rear_wheel_joint" -> "leftbase_rear_wheel"
 "base_link" -> "base_to_right_leg" [label="xyz: 0 -0.22 0.25 \nrpy: 0 -0 0"]
 "base_to_right_leg" -> "rightleg_link"
+"rightleg_link" -> "rightleg_to_leftbase" [label="xyz: 0 0 -0.6 \nrpy: 0 -0 0"]
+"rightleg_to_leftbase" -> "rightleg_base_link"
+"rightleg_base_link" -> "rightbase_front_wheel_joint" [label="xyz: 0.133333 0 -0.1 \nrpy: 0 -0 0"]
+"rightbase_front_wheel_joint" -> "rightbase_front_wheel"
+"rightleg_base_link" -> "rightbase_rear_wheel_joint" [label="xyz: -0.133333 0 -0.1 \nrpy: 0 -0 0"]
+"rightbase_rear_wheel_joint" -> "rightbase_rear_wheel"
+"base_link" -> "gripper_arm_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"gripper_arm_joint" -> "gripper_arm"
+"gripper_arm" -> "gripperLeft_to_gripper" [label="xyz: 0.7 0 0.15 \nrpy: 0 -0 0"]
+"gripperLeft_to_gripper" -> "gripper_left_finger"
+"gripper_left_finger" -> "gripperLeft_finger_tip_to_gripper" [label="xyz: 0.1 0 0 \nrpy: 0 -0 0"]
+"gripperLeft_finger_tip_to_gripper" -> "gripper_left_finger_tip"
+"gripper_arm" -> "gripperRight_to_gripper" [label="xyz: 0.7 -0 0.15 \nrpy: -3.1415 0 0"]
+"gripperRight_to_gripper" -> "gripper_right_finger"
+"gripper_right_finger" -> "gripperRight_finger_tip_to_gripper" [label="xyz: 0.1 0 0 \nrpy: 0 -0 0"]
+"gripperRight_finger_tip_to_gripper" -> "gripper_right_finger_tip"
+"base_link" -> "header_joint" [label="xyz: 0 0 0.3 \nrpy: 0 -0 0"]
+"header_joint" -> "header_link"
+"header_link" -> "headbox" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"headbox" -> "headbox"
 }
