@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="r2d2-Xacro">
+
+    <xacro:property name="pi" value="1.57075"/>
+
+    <!-- Base Link -->
+
+        <link name="base_link">
+            <xacro:property name="radius" value="0.2"/>
+            <xacro:property name="length" value="0.6"/>
+
+            <visual>
+                <geometry>
+                    <cylinder radius="${radius}" length="${length}"/>
+                </geometry>
+            </visual>
+        </link>
+
+    <!-- legs -->
+
+        <xacro:macro name="leg" params="prefix reflect">
+            <link name="${prefix}leg_link">
+                <xacro:property name="dimensions" value="0.6 0.1 0.2"/>
+                
+                <visual name="">
+                    <geometry>
+                        <box size="${dimensions}"/>
+                    </geometry>
+                    <origin xyz="0.0 0.0 -0.3" rpy="0.0 ${pi} 0.0"/>
+                    <material name="white"/>
+                </visual>
+                <collision>
+                    <geometry>
+                        <box size="${dimensions}"/>
+                    </geometry>
+                </collision>
+                <inertial>
+                    <mass value="10"/>
+                    <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+                </inertial>
+            </link>
+
+            <joint name="base_to_${prefix}_leg" type="fixed">
+                <parent link="base_link"/>
+                <child link="${prefix}leg_link"/>
+                <origin xyz="0.0 ${reflect*(0.22)} 0.25" rpy="0.0 0.0 0.0"/>
+            </joint>
+        </xacro:macro>
+
+    <xacro:leg prefix="right" reflect="1"/>
+    <xacro:leg prefix="left" reflect="-1"/>
+    
+    <!-- leg bases -->
+
+        <xacro:macro name="legbases" params="prefix offset">
+            <xacro:property name="dimensions" value="0.4 0.1 0.1"/>
+            
+            <link name="${prefix}leg_base_link">
+                <visual name="">
+                    <geometry>
+                        <box size="${dimensions}"/>
+                    </geometry>
+                    <material name="white"/>
+                </visual>
+                <collision>
+                    <geometry>
+                        <box size="${dimensions}"/>
+                    </geometry>
+                </collision>
+                <inertial>
+                    <mass value="10"/>
+                    <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+                </inertial>
+            </link>
+
+            <joint name="${prefix}leg_to_${prefix}base" type="fixed">
+                <parent link="${prefix}leg_link"/>
+                <child link="${prefix}leg_base_link"/>
+                <origin xyz="0.0 0.0 -0.6" rpy="0.0 0.0 0.0"/>
+            </joint>
+        </xacro:macro>
+
+        <xacro:legbases prefix="left" offset="1"/>
+        <xacro:legbases prefix="right" offset="-1"/>
+    
+
+</robot>
